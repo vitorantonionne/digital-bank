@@ -1,4 +1,5 @@
 const Deposit = require("./Deposit")
+const Loan = require("./Loan")
 const Transfer = require("./Transfer")
 const User = require("./User")
 
@@ -36,4 +37,15 @@ module.exports = class App {
     }
   }
 
+  static takeLoan(email, value, numberOfInstallments) {
+    const user = App.findUser(email)
+    if (user) {
+      const newLoan = new Loan(value, numberOfInstallments)
+      user.account.addLoan(newLoan)
+    }
+  }
+
+  static changeLoanFee(newFeePercentage) {
+    Loan.fee = newFeePercentage
+  }
 }

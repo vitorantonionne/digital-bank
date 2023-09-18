@@ -12,11 +12,11 @@ module.exports = class Loan{
     this.createDate = new Date()
   }
 
-  static getFees() {
+  static getFee() {
     return this.#fees
   }
 
-  static setFees(newFees) {
+  static set Fee(newFees) {
     Loan.#fees = 1 + (newFees / 100)
   }
 
